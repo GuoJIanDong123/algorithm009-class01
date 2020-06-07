@@ -66,8 +66,45 @@
       分治和回溯本质也是一种递归
       重复性，有最近的重复性和最优的重复性，最优的就是动态规划，最近重复性根据怎么分解有回溯分治或者其他的一些方法本质是一种递归，也就是找他的重复性
       
-      
-            
+      1、递归状态树
+		
+		 找重复性问题，最后分解问题，以及组合每个子问题的结果
+		 
+		 
+		2 分治Divide & Conquer
+		
+		   代码模板
+			   def divide_conquer(problem,param1,param2.....):
+				  #recursion terminal
+				  if problem is None:
+				    print_result
+					 return
+					
+					# prepare data
+					data = prepare_data(problem)
+					subproblems = split_problem(problem,data)
+					# conquer subproblems
+					subresult1 = self.divide_conquer(subproblems[0],p1,...)
+					subresult2 = self.divide_conquer(subproblems[1],p2....)
+					subresult3 = self.divide_conquer(subproblems[2],p1....)
+				    ......
+					#process and generate the final result
+					result = process_result(subresult1,subrestul2,subresult2.....)
+					
+					# reverb the current level states
+					
+					
+		 3、回溯
+		    回溯法采用试错的思想，它尝试分步的去解决一个问题，在分步解决问题的过程中，当它通过尝试发现现有的分步答案
+			 不能得到有效的正确的解答的时候，他将取消上一步甚至是上几步的计算，在通过其他可能的分步解答再次尝试寻找问题的答案
+			 
+			 回溯法通常用最简单的递归方法来实现，在反复重复上述的步骤后可能出现的两种情况：
+			   1）找到一个可能存在的正确的答案
+				2）在尝试了所有的可能的分步方法后宣布该问题没有答案
+			  在最坏的情况下，回溯法会导致一次复杂度为指数时间的计算
+					
+
+
        
         
        
