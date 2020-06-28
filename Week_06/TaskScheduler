@@ -1,0 +1,15 @@
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int[] taskArray = new int[26];
+        for(char c: tasks) {
+            taskArray[c - 'A']++;
+        }
+        Arrays.sort(taskArray);
+        int maxVal = taskArray[25]-1;
+        int maxSlots = maxVal * n;
+        for(int i= 24; i >= 0 && taskArray[i] > 0; i--){
+            maxSlots  -= Math.min(taskArray[i],maxVal);
+        }
+        return maxSlots > 0 ? maxSlots+tasks.length : tasks.length;
+    }
+}
