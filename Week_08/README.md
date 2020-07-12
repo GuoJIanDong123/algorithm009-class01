@@ -38,4 +38,4 @@
 
 # 二、布隆过滤器
 ## 1、Hash表结构图
-![avatar](HashTable.png)
+![hash结构](https://github.com/GuoJIanDong123/algorithm009-class01/blob/master/Week_08/HashTable.png)
