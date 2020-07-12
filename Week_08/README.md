@@ -39,3 +39,51 @@
 # 二、布隆过滤器
 ## 1、Hash表结构图
 ![hash结构](https://github.com/GuoJIanDong123/algorithm009-class01/blob/master/Week_08/HashTable.png)
+
+## 2、Bloom Filter vs Hash Table
+- 一个是很长的二进制向量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否存在一个集合中
+- 优点是空间效率和查询时间都远远超过一般的算法
+- 缺点是有一定的误识别率和删除困难
+## 3、案例
+- 比特币网络
+- 分布式系统
+- Redis缓存
+- 垃圾邮件、评论等的过滤
+## 4、过滤器实现
+```Python
+from bitarray import bitarray
+import mmh3
+class BloomFilter:
+   def __init__(self,size,hash_num)：
+      self.size = size
+      self.hash_num = hash_num
+      self.bit_array = bitarray(size)
+      self.bit_array .setall(0)
+      
+    def add(self,s):
+      for seed in range(self.hash_num):
+         result = mmh3.hash(s,seed)%self.size
+         self.bit_array[result] = 1
+    def lookup(self,s):
+       for seed in range(self.hash_num):
+         result = mmh3.hash(s,seed) % self.size
+         if self.bit_array[result] ==0
+            return 'Nope'
+        return 'Probably'
+ bf = BloomFilter(500000,7)
+ bf.add("dantezhao")
+ print(bf.lookup("dantezhao"))
+ print(bf.lookup("yyj))
+ ```
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
