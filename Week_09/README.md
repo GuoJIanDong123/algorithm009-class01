@@ -87,3 +87,36 @@ def f(n):
    y,x = x+y,y
   return y
 ```
+# 二、字符串算法
+## 1、字符串基础知识
+ - Python：x ='abcd'   x="abcd"
+ - Java:String x = "abbc"
+ - C++:string x("abcd")
+## 2、遍历字符串
+ - Python：
+ ```Python
+ for ch in "abbc":
+   print(ch)
+ ```
+ ```Java:
+ String x = "abbc";
+ for(int i=0;i<x.size();++i){
+    char ch = x.charAt(i);
+ }
+ for ch in x.toCharArray(){
+    System.out.println(ch);
+ }
+ ```
+ ```C++
+ string x("abbc")
+ for(int i=0;i<s1.length();i++){
+    cout<<x[i];
+ }
+ ```
+ ## 3、字符串比较
+ ```Java
+ String x = new String("abb");
+ String y = new String("abb");
+ x==y -->false
+ x.equals(y) -->true
+ 
