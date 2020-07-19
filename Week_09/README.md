@@ -120,3 +120,56 @@ def f(n):
  x==y -->false
  x.equals(y) -->true
  
+ ## 4、字符串转数字
+ ```Java
+ public int myAtoi(String str){
+   int index = 0,sign = 1,total = 0;
+   //1.Empyty string
+   if(str.length()==0) return 0;
+   //2.Remove spaces
+   while(str.charAt(index)==' ' && index< str.length()) index++;
+   //3.Handle signs
+   if(str.charSt(index)=='+' || str.charAt(index)=='-'){
+      sign = str.charAt(index) =='+'?1:-1;
+      index ++;
+   }
+   //4.convert number and avoid overflow
+   while(index <str.length()){
+      int digit = str.charAt(index) - '0';
+      if(digit<0 || digit>9) break;
+      if(Intger.MAX_VALUE/10 < total || Integer.MAX_VALUE/10 == total && Integer.MAX_VALUE%10 < digit)
+          return sign == 1?Integer.MAX_VALUE:Integer.MIN_VALUE;
+       total = 10 * total +digit;
+       index++
+   }
+   
+   return total*sign;
+ }
+ ```
+ ## 5、字符串匹配算法
+ - 暴力法
+ ```Java
+ public static int forceSearch(String txt,String pat){
+    int M = txt.length();
+    int N = pat.length();
+    for (int i = 0;i<M;i++){
+      int j;
+      for(j=0;j<N;j++){
+        if(txt.charAt(i+j)!=pat.charAt(j)){
+            break;
+        }
+      }
+       if(j==N){
+         return i;
+      }
+    }
+    return -1;
+ }
+ ```
+ - Rabin-Karp算法
+    - 假设子串的长度为M(pat),目标字符串的长度N(txt)
+    - 计算子串的hash值hash_pat
+    - 子串目标字符串txt中每个长度为M的子串的hash值计算(N-M+1)次
+    - 比较hash值：如果hash值不同，字符串必然不匹配；如果hash值相同，还需用朴素算法再匹配
+    
+ - KMP算法
